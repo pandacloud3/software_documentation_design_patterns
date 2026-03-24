@@ -10,7 +10,7 @@ class IAppDAL(ABC):
         pass
 
     @abstractmethod
-    def write_db(self):
+    def write_db(self, data):
         pass
 
     # """
