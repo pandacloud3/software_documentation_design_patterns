@@ -1,0 +1,6 @@
+InspectionID,Borough,InspectionDate,ViolationType
+1001,Manhattan,2023-10-01,No Fire Extinguisher
+1002,Brooklyn,2023-10-02,Blocked Exit
+1003,Queens,2023-10-03,Faulty Sprinkler
+1004,Bronx,2023-10-04,Expired Alarm
+1005,Staten Island,2023-10-05,No Violation

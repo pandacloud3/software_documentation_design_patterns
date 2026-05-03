@@ -1,0 +1,7 @@
+{
+    "export_target": "redis", 
+    "redis_host": "localhost",
+    "redis_port": 6379,
+    "kafka_server": "localhost:9092",
+    "kafka_topic": "fire_data"
+}
