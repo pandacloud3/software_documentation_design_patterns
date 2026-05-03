@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Стоматологія - MVC Додаток</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4 text-primary">База Лікарів (Предметна область)</h1>
+    
+    <a href="{{ url_for('api.add_dentist') }}" class="btn btn-success mb-3">
+        + Додати нового лікаря
+    </a>
+    
+    <table class="table table-bordered table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>ПІБ</th>
+                <th>Ліцензія</th>
+                <th>Спеціалізація</th>
+                <th>Кабінет</th>
+                <th class="text-center">Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in dentists %}
+            <tr>
+                <td>{{ d.id }}</td>
+                <td><strong>{{ d.full_name }}</strong></td>
+                <td>{{ d.license_number }}</td>
+                <td>{{ d.specialization }}</td>
+                <td>{{ d.cabinet_number }}</td>
+                <td class="text-center">
+                    <a href="{{ url_for('api.edit_dentist', id=d.id) }}" class="btn btn-primary btn-sm">Редагувати</a>
+                    
+                    <form action="{{ url_for('api.delete_dentist', id=d.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Ви точно хочете видалити цього лікаря?');">Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6" class="text-center text-muted">У базі поки немає лікарів. Додайте першого!</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

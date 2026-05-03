@@ -29,3 +29,16 @@ class SqlRepository(IDataRepository):
 
     def commit(self):
         db.session.commit()
+
+    def get_all_dentists(self):
+        return Dentist.query.all()
+
+    def get_dentist_by_id(self, dentist_id):
+        return Dentist.query.get(dentist_id)
+
+    def delete_dentist(self, dentist_id):
+        dentist = self.get_dentist_by_id(dentist_id)
+        if dentist:
+            Appointment.query.filter_by(dentist_id=dentist_id).delete()
+            db.session.delete(dentist)
+            db.session.commit()
